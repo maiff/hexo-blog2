@@ -4,18 +4,29 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>读后感——《学习JavaScript数据结构与算法》 | Web up!!</title>
+  <title>实战中遇到的问题——css | Web up!!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="发现东华的图书馆真的很强大，什么书都有。今天我们来说说《学习JavaScript数据结构与算法》。都说学前端的不用学数据结构和算法什么的，不过我怎么能够把自己限制在前端的圈子里，我恰好对数据结构和算法有很高的兴趣（还有操作系统什么的）。废话不多少，直接来说说书里的内容。">
+  <meta name="description" content="最近一直在写静态网页，搭配sass和自己造的轮子果然速度有了长足的进步，不过在实战中遇到某些css问题算查缺补漏吧。
+z-index属性很简单是层叠顺序的控制，但是我在实际开发的过程中发现不起作用了，原来是没有创建层叠上下文。如果有层叠上下文，就有这样的顺序. 层叠上下文的创建:
+
+1.皇亲国戚派：页面根元素天生具有层叠上下文，称之为“根层叠上下文”。2.科考入选派：z-index值为数值的定位元">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读后感——《学习JavaScript数据结构与算法》">
-<meta property="og:url" content="http://maiff.cn/2016/07/03/读后感——《学习JavaScript数据结构与算法》/index.html">
+<meta property="og:title" content="实战中遇到的问题——css">
+<meta property="og:url" content="http://maiff.cn/2016/07/30/实战中遇到的问题——css/index.html">
 <meta property="og:site_name" content="Web up!!">
-<meta property="og:description" content="发现东华的图书馆真的很强大，什么书都有。今天我们来说说《学习JavaScript数据结构与算法》。都说学前端的不用学数据结构和算法什么的，不过我怎么能够把自己限制在前端的圈子里，我恰好对数据结构和算法有很高的兴趣（还有操作系统什么的）。废话不多少，直接来说说书里的内容。">
-<meta property="og:updated_time" content="2016-07-03T04:10:16.535Z">
+<meta property="og:description" content="最近一直在写静态网页，搭配sass和自己造的轮子果然速度有了长足的进步，不过在实战中遇到某些css问题算查缺补漏吧。
+z-index属性很简单是层叠顺序的控制，但是我在实际开发的过程中发现不起作用了，原来是没有创建层叠上下文。如果有层叠上下文，就有这样的顺序. 层叠上下文的创建:
+
+1.皇亲国戚派：页面根元素天生具有层叠上下文，称之为“根层叠上下文”。2.科考入选派：z-index值为数值的定位元">
+<meta property="og:image" content="http://image.zhangxinxu.com/image/blog/201601/2016-01-07_235108.png">
+<meta property="og:updated_time" content="2016-07-30T10:29:59.003Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读后感——《学习JavaScript数据结构与算法》">
-<meta name="twitter:description" content="发现东华的图书馆真的很强大，什么书都有。今天我们来说说《学习JavaScript数据结构与算法》。都说学前端的不用学数据结构和算法什么的，不过我怎么能够把自己限制在前端的圈子里，我恰好对数据结构和算法有很高的兴趣（还有操作系统什么的）。废话不多少，直接来说说书里的内容。">
+<meta name="twitter:title" content="实战中遇到的问题——css">
+<meta name="twitter:description" content="最近一直在写静态网页，搭配sass和自己造的轮子果然速度有了长足的进步，不过在实战中遇到某些css问题算查缺补漏吧。
+z-index属性很简单是层叠顺序的控制，但是我在实际开发的过程中发现不起作用了，原来是没有创建层叠上下文。如果有层叠上下文，就有这样的顺序. 层叠上下文的创建:
+
+1.皇亲国戚派：页面根元素天生具有层叠上下文，称之为“根层叠上下文”。2.科考入选派：z-index值为数值的定位元">
+<meta name="twitter:image" content="http://image.zhangxinxu.com/image/blog/201601/2016-01-07_235108.png">
   
     <link rel="alternative" href="/atom.xml" title="Web up!!" type="application/atom+xml">
   
@@ -175,11 +186,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-读后感——《学习JavaScript数据结构与算法》" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-实战中遇到的问题——css" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/03/读后感——《学习JavaScript数据结构与算法》/" class="article-date">
-  	<time datetime="2016-07-03T02:34:55.000Z" itemprop="datePublished">2016-07-03</time>
+      <a href="/2016/07/30/实战中遇到的问题——css/" class="article-date">
+  	<time datetime="2016-07-30T02:20:10.000Z" itemprop="datePublished">2016-07-30</time>
 </a>
     </div>
   
@@ -192,7 +203,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      读后感——《学习JavaScript数据结构与算法》
+      实战中遇到的问题——css
     </h1>
   
 
@@ -202,7 +213,7 @@
         
         
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/书/">书</a>
+	<a class="article-category-link" href="/categories/CSS/">CSS</a>
 	</div>
 
 
@@ -212,42 +223,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>发现东华的图书馆真的很强大，什么书都有。<br>今天我们来说说《学习JavaScript数据结构与算法》。<br>都说学前端的不用学数据结构和算法什么的，不过我怎么能够把自己限制在前端的圈子里，我恰好对数据结构和算法有很高的兴趣（还有操作系统什么的）。废话不多少，直接来说说书里的内容。<br><a id="more"></a></p>
-<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>这本书是我在知乎上看到的。因为之前学过数据结构和算法觉得这本书说的有点浅不过还是有收获的。</p>
-<h3 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h3><p>说的是JavaScript的基础，按照书的意思，调试是在浏览器的console里我想这也太蛋疼了，我直接在node里面调试的很爽。</p>
-<h3 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h3><p>数组，JavaScript中最基础的数据结构，其实JavaScript中的数组不能算真正意义上的数组。所以效率显得不一定多高。这里我觉得需要注意的点，就是几个函数的使用：</p>
+        <p>最近一直在写静态网页，搭配sass和自己造的轮子果然速度有了长足的进步，不过在实战中遇到某些css问题算查缺补漏吧。</p>
+<h3 id="z-index"><a href="#z-index" class="headerlink" title="z-index"></a>z-index</h3><p>属性很简单是层叠顺序的控制，但是我在实际开发的过程中发现不起作用了，原来是没有创建层叠上下文。如果有层叠上下文，就有这样的顺序. <img src="http://image.zhangxinxu.com/image/blog/201601/2016-01-07_235108.png" alt=""><br>层叠上下文的创建:</p>
+<blockquote>
+<p>1.皇亲国戚派：页面根元素天生具有层叠上下文，称之为“根层叠上下文”。<br>2.科考入选派：z-index值为数值的定位元素的传统层叠上下文。<br>3.其他当官途径：其他CSS3属性。</p>
+</blockquote>
+<p>其中3包括：<br>z-index值不为auto的flex项(父元素display:flex|inline-flex).<br>元素的opacity值不是1.<br>元素的transform值不是none.<br>元素mix-blend-mode值不是normal.<br>元素的filter值不是none.<br>元素的isolation值是isolate.<br>will-change指定的属性值为上面任意一个。<br>元素的-webkit-overflow-scrolling设为touch.</p>
+<p>然后我写了一个demo发现真的是这样z-index只会在层叠上下文创建后才会有用。然后在ie6、7上会有一个bug详见 <a href="http://blog.xuite.net/vexed/tech/22129211" target="_blank" rel="external">IE6 IE7 CSS z-index Bug</a><br><a href="http://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/" target="_blank" rel="external">参考链接</a><br>不由得感叹大牛成功都是有道理的，想快速的做学问是不行的。</p>
+<h3 id="text-align"><a href="#text-align" class="headerlink" title="text-align"></a>text-align</h3><p>text-align属性可以有效作用于inline/inline-block水平的元素。<br>然后我看到张老师的一篇文章，就停不下来了。<br><a href="http://www.zhangxinxu.com/wordpress/2011/12/position-absolute-text-align-center/" target="_blank" rel="external">相关链接</a></p>
+<h3 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h3><blockquote>
+<p>BFC元素特性表现原则就是，内部子元素再怎么翻江倒海，翻云覆雨都不会影响外部的元素。所以，避免margin穿透啊，清除浮动什么的也好理解了</p>
 <ul>
-<li>filter</li>
-<li>map</li>
-<li>sort<br>……详见 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="external">链接</a></li>
+<li>float的值不为none。</li>
+<li>overflow的值为auto,scroll或hidden。</li>
+<li>display的值为table-cell, table-caption, inline-block中的任何一个。</li>
+<li>position的值不为relative和static。</li>
 </ul>
-<h3 id="第二章-1"><a href="#第二章-1" class="headerlink" title="第二章"></a>第二章</h3><p>第二章说的是栈——后进先出，个人觉得JavaScript的原生函数是有对栈的支持，有push、pop的原生函数，所以实现起来不是很难，但是难得是适用场景，我总是想不到一些场景。书里用的是进制的转换，我之前写的印象深刻的是在编译原理里语法分析。</p>
-<h3 id="第三章队列"><a href="#第三章队列" class="headerlink" title="第三章队列"></a>第三章队列</h3><p>队列———先进先出，JavaScript也有原生的函数的支持，shift、unshift，队列的操作还真么有接触，也许我的代码抽象能力不够吧。</p>
-<h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><p>我之前用c语言的指针实现过，开始一直想用JavaScript实现，后来看了代码恍然大悟。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function LinkedList()&#123;</div><div class="line">	var Node=function(ele)&#123;</div><div class="line">		this.element=ele;</div><div class="line">		this.next=null;</div><div class="line">	&#125;</div><div class="line">	var length=0;</div><div class="line">	var head=null;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>基本的数据结构。</p>
-<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><p>集合在ES6里有原生的支持，这里用数组实现。</p>
-<h3 id="字典和散列表"><a href="#字典和散列表" class="headerlink" title="字典和散列表"></a>字典和散列表</h3><p>这里的字典在ES6中就是map，至于散列表是我真正了解的东西，好像我在数据结构中上过的但是我忘记了，重要的我觉得是那个哈希函数。</p>
-<h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3><p>二叉树、<a href="http://www.cnblogs.com/skywang12345/p/3245399.html" target="_blank" rel="external">红黑树</a><br>搜索方式</p>
-<ul>
-<li>广度优先搜索</li>
-<li>深度优先搜索</li>
-</ul>
-<h3 id="图"><a href="#图" class="headerlink" title="图"></a>图</h3><p>图的表示</p>
-<ul>
-<li>邻接矩阵</li>
-<li>邻接表<br>搜索方式</li>
-<li>广度优先搜索</li>
-<li>深度优先搜索</li>
-</ul>
-<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h3 id="排序方式"><a href="#排序方式" class="headerlink" title="排序方式"></a>排序方式</h3><ul>
-<li>我最了解的就是快速排序，不稳定的。</li>
-</ul>
-<h3 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h3><ul>
-<li>递归分治</li>
-<li>动态规划</li>
-<li>贪心算法</li>
-<li>分支限界法</li>
-</ul>
+</blockquote>
+<p>顺带做做清除浮动的例子。</p>
+<p>###</p>
 
       
     </div>
@@ -257,18 +251,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/07/04/《javascript设计模式与开发实践》——读书笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/08/06/对象到原始值的转化/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          《javascript设计模式与开发实践》——读书笔记
+          对象到原始值的转化
         
       </div>
     </a>
   
   
-    <a href="/2016/07/02/新的开始/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">新的开始</div>
+    <a href="/2016/07/19/JS不同模块化的细节思考/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS不同模块化的细节思考</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -303,7 +297,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="读后感——《学习JavaScript数据结构与算法》" data-title="读后感——《学习JavaScript数据结构与算法》" data-url="http://maiff.cn/2016/07/03/读后感——《学习JavaScript数据结构与算法》/"></div>
+	<div class="ds-thread" data-thread-key="实战中遇到的问题——css" data-title="实战中遇到的问题——css" data-url="http://maiff.cn/2016/07/30/实战中遇到的问题——css/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

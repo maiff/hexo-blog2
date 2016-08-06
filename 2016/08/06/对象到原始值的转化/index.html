@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>对象到原始值的转化 | Web up!!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="以前看到这个题目顶多会想一下，不就是调用一下toString()，然后就没有下文了，所以这就是会感觉不踏实，感觉提升不大。但是我通过观看大牛的博客发现他们都有一种精神想的很全面————刨根问底。然后我最近又看了一遍犀牛书，来成长一下我刨根问底的精神。
+对象到原始值的转化无非两种情况：
+
+对象到字符串
+对象到数字">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对象到原始值的转化">
+<meta property="og:url" content="http://maiff.cn/2016/08/06/对象到原始值的转化/index.html">
+<meta property="og:site_name" content="Web up!!">
+<meta property="og:description" content="以前看到这个题目顶多会想一下，不就是调用一下toString()，然后就没有下文了，所以这就是会感觉不踏实，感觉提升不大。但是我通过观看大牛的博客发现他们都有一种精神想的很全面————刨根问底。然后我最近又看了一遍犀牛书，来成长一下我刨根问底的精神。
+对象到原始值的转化无非两种情况：
+
+对象到字符串
+对象到数字">
+<meta property="og:updated_time" content="2016-08-06T13:29:56.903Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="对象到原始值的转化">
+<meta name="twitter:description" content="以前看到这个题目顶多会想一下，不就是调用一下toString()，然后就没有下文了，所以这就是会感觉不踏实，感觉提升不大。但是我通过观看大牛的博客发现他们都有一种精神想的很全面————刨根问底。然后我最近又看了一遍犀牛书，来成长一下我刨根问底的精神。
+对象到原始值的转化无非两种情况：
+
+对象到字符串
+对象到数字">
+  
+    <link rel="alternative" href="/atom.xml" title="Web up!!" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">maiff</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+				        	<li>
+				        		<a href="http://maiff.ren/">原来的博客</a>
+				        	<li>
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/maiff" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/3169630840" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/mai-meng-xiang" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我是maiff，逗比的理想主义者…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">maiff</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/logo.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">maiff</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/maiff" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/3169630840" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/mai-meng-xiang" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-对象到原始值的转化" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/06/对象到原始值的转化/" class="article-date">
+  	<time datetime="2016-08-06T11:21:17.000Z" itemprop="datePublished">2016-08-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      对象到原始值的转化
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/JS/">JS</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以前看到这个题目顶多会想一下，不就是调用一下toString()，然后就没有下文了，所以这就是会感觉不踏实，感觉提升不大。但是我通过观看大牛的博客发现他们都有一种精神想的很全面————刨根问底。<br>然后我最近又看了一遍犀牛书，来成长一下我刨根问底的精神。</p>
+<p>对象到原始值的转化无非两种情况：</p>
+<ul>
+<li>对象到字符串</li>
+<li>对象到数字<a id="more"></a>
+</li>
+</ul>
+<blockquote>
+<p>javascript中对象到字符串的转换经过了如下这些步骤：<br>如果对象具有toString方法，则调用这个方法。如果它返回一个原始值，javascript将这个值转换为字符串，并返回这个字符串结果。需要注意的是，原始值到字符串的转换在下表中已经有了详细说明。<br>如果对象没有toString方法，或者这个方法并不返回一个原始值，那么javascript会调用valueOf方法。如果存在这个方法，则javascript调用它。如果返回值是原始值，javascript将这个值转换为字符串，并返回这个字符串结果。<br>否则，javascript无法从toString和valueOf获得一个原始值，因此这时抛出一个类型错误异常。<br>javascript中对象到数字的转换经过了如下这些步骤：<br>如果对象具有valueOf方法，后者返回一个原始值，则javascript将这个原始值转换为数字（如果需要的话）并返回这个数字。<br>否则，如果对象具有toString方法，后者返回一个原始值，则javascript将其转换为数字类型并返回。(见示例）<br>否则，javascript抛出一个类型异常。</p>
+</blockquote>
+<p>什么意思呢？有什么用呢？<br>比如空数组转化为数字会是0，因为数组继承了默认的valueOf()方法。<br>然后再举个例子，在运算符+和==中，如果其中有个操作符是对象会怎么样，好先不急，我们来看看+运算符的规则</p>
+<ul>
+<li>如果操作符数中有一个对象，它将转换为原始值(string、number或boolean)</li>
+<li>如果操作符数中有一个字符串，第二个操作数将转换成字符串，并且连接在一起转换成一个字符串</li>
+<li>在其它情况之下，两个操作数转换为数字并且将执行加法运算<br>详见<a href="http://www.w3cplus.com/javascript/javascriptss-addition-operator-demystified.html" target="_blank" rel="external">链接</a><br>然后就是我接下来要说的如果其中有个对象，犀牛书上的话我看了半天没看懂，后来终于看懂了，归根结底是我对+号的不了解以及我前面的化没看懂。</li>
+</ul>
+<p>在+ or ==中除了日起对象，都是对象到数字的转化过程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var r=&#123;&#125;;</div><div class="line">r.valueOf=function()&#123;</div><div class="line">	return 3;</div><div class="line">&#125;</div><div class="line">console.log(3+r);//6</div></pre></td></tr></table></figure></p>
+<p>那日期是什么样了，看下面代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var date=new Date();</div><div class="line">console.log(date.valueOf());//1470484509871</div><div class="line"></div><div class="line">console.log(date+4);//Sat Aug 06 2016 19:56:43 GMT+0800 (中国标准时间)4</div></pre></td></tr></table></figure></p>
+<p>上面代码如果按照我上面说的，最后打印的就是1470484509875，可不是这个，原因是日期对象是预设对象，是对象转化为字符串的过程。</p>
+<p>那我不经有有个疑问如果操作符一个是对象一个是日期对象会怎么样，同理日期对象依旧按对象转变为字符串的过程，而正常对象安转变为数字的过程，这个告诉我们对象转为原始值在+中跟操作数无关，跟操作符有关。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var date=new Date();</div><div class="line">var r=&#123;&#125;;</div><div class="line">r.valueOf=function()&#123;</div><div class="line">	return 3;</div><div class="line">&#125;;</div><div class="line">r.toString=function()&#123;</div><div class="line">	return 4;</div><div class="line">&#125;</div><div class="line">console.log(3+r);//6</div><div class="line">console.log(date.valueOf());//1470484509871</div><div class="line"></div><div class="line">console.log(r+date);//3Sat Aug 06 2016 19:56:43 GMT+0800 (中国标准时间)</div><div class="line">console.log(date+r);//Sat Aug 06 2016 19:56:43 GMT+0800 (中国标准时间)3</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/07/30/实战中遇到的问题——css/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">实战中遇到的问题——css</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="对象到原始值的转化" data-title="对象到原始值的转化" data-url="http://maiff.cn/2016/08/06/对象到原始值的转化/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"b242f3caa38e95a9e9dc2634d97b34ed"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 maiff
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

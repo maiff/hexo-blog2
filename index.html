@@ -67,7 +67,7 @@
 						<li>Tags</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -172,6 +172,145 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-对象到原始值的转化" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/06/对象到原始值的转化/" class="article-date">
+  	<time datetime="2016-08-06T11:21:17.000Z" itemprop="datePublished">2016-08-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/06/对象到原始值的转化/">对象到原始值的转化</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以前看到这个题目顶多会想一下，不就是调用一下toString()，然后就没有下文了，所以这就是会感觉不踏实，感觉提升不大。但是我通过观看大牛的博客发现他们都有一种精神想的很全面————刨根问底。<br>然后我最近又看了一遍犀牛书，来成长一下我刨根问底的精神。</p>
+<p>对象到原始值的转化无非两种情况：</p>
+<ul>
+<li>对象到字符串</li>
+<li>对象到数字
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/JS/">JS</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/06/对象到原始值的转化/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-实战中遇到的问题——css" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/30/实战中遇到的问题——css/" class="article-date">
+  	<time datetime="2016-07-30T02:20:10.000Z" itemprop="datePublished">2016-07-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/30/实战中遇到的问题——css/">实战中遇到的问题——css</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近一直在写静态网页，搭配sass和自己造的轮子果然速度有了长足的进步，不过在实战中遇到某些css问题算查缺补漏吧。</p>
+<h3 id="z-index"><a href="#z-index" class="headerlink" title="z-index"></a>z-index</h3><p>属性很简单是层叠顺序的控制，但是我在实际开发的过程中发现不起作用了，原来是没有创建层叠上下文。如果有层叠上下文，就有这样的顺序. <img src="http://image.zhangxinxu.com/image/blog/201601/2016-01-07_235108.png" alt=""><br>层叠上下文的创建:</p>
+<blockquote>
+<p>1.皇亲国戚派：页面根元素天生具有层叠上下文，称之为“根层叠上下文”。<br>2.科考入选派：z-index值为数值的定位元素的传统层叠上下文。<br>3.其他当官途径：其他CSS3属性。</p>
+</blockquote>
+<p>其中3包括：<br>z-index值不为auto的flex项(父元素display:flex|inline-flex).<br>元素的opacity值不是1.<br>元素的transform值不是none.<br>元素mix-blend-mode值不是normal.<br>元素的filter值不是none.<br>元素的isolation值是isolate.<br>will-change指定的属性值为上面任意一个。<br>元素的-webkit-overflow-scrolling设为touch.</p>
+<p>然后我写了一个demo发现真的是这样z-index只会在层叠上下文创建后才会有用。然后在ie6、7上会有一个bug详见 <a href="http://blog.xuite.net/vexed/tech/22129211" target="_blank" rel="external">IE6 IE7 CSS z-index Bug</a><br><a href="http://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/" target="_blank" rel="external">参考链接</a><br>不由得感叹大牛成功都是有道理的，想快速的做学问是不行的。</p>
+<h3 id="text-align"><a href="#text-align" class="headerlink" title="text-align"></a>text-align</h3><p>text-align属性可以有效作用于inline/inline-block水平的元素。<br>然后我看到张老师的一篇文章，就停不下来了。<br><a href="http://www.zhangxinxu.com/wordpress/2011/12/position-absolute-text-align-center/" target="_blank" rel="external">相关链接</a></p>
+<h3 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h3><blockquote>
+<p>BFC元素特性表现原则就是，内部子元素再怎么翻江倒海，翻云覆雨都不会影响外部的元素。所以，避免margin穿透啊，清除浮动什么的也好理解了</p>
+<ul>
+<li>float的值不为none。</li>
+<li>overflow的值为auto,scroll或hidden。</li>
+<li>display的值为table-cell, table-caption, inline-block中的任何一个。</li>
+<li>position的值不为relative和static。</li>
+</ul>
+</blockquote>
+<p>顺带做做清除浮动的例子。</p>
+<p>###</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/CSS/">CSS</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-JS不同模块化的细节思考" class="article article-type-post" itemscope itemprop="blogPost">
   

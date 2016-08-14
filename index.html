@@ -67,7 +67,7 @@
 						<li>Tags</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -173,6 +173,80 @@
 
       <div class="body-wrap">
   
+    <article id="post-第二遍犀牛书——表达式与运算符" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/14/第二遍犀牛书——表达式与运算符/" class="article-date">
+  	<time datetime="2016-08-14T07:48:49.000Z" itemprop="datePublished">2016-08-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/14/第二遍犀牛书——表达式与运算符/">第二遍犀牛书——表达式与运算符</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>暑假在家一阵一阵没有动力干事情，归根结底就是懒。<br>好了废话不多说我们来说说第二遍看犀牛书——表达式与运算符的内容。</p>
+<h3 id="变量初始化"><a href="#变量初始化" class="headerlink" title="变量初始化"></a>变量初始化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a=1;</div><div class="line">delete a;//false</div><div class="line"></div><div class="line">t=1;</div><div class="line">delete t;//true</div></pre></td></tr></table></figure>
+<p>注意这两者的区别，虽然这两者如果在全局的上下文中都是创建的全局变量，但是第二种可以用delete删除，而第一种不可以，所以第二宗更像创建了windows的一个属性。</p>
+<h3 id="算数优先级"><a href="#算数优先级" class="headerlink" title="算数优先级"></a>算数优先级</h3><p>以前从来没有注意过，<code>a=1+1</code>,以前看这种赋值表达式一般直接认为a=2，却从来没想过为什么，原来是运算符的优先级问题，=号（赋值）的优先级往往是最低的。</p>
+<p>运算顺序：</p>
+<blockquote>
+<p>因为一元操作符、赋值和三元条件运算符都具有从右至左的结合性。</p>
+</blockquote>
+<p>但是无论是设呢么运算符表达式都是从左到右计算的，（个人猜测跟编译有关）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">b=(a++)+a;//这里就会反应上述的容易忽视的一点</div></pre></td></tr></table></figure></p>
+<p><strong>null</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">2+null=2;//null被转化为1</div><div class="line">0==null;//false</div><div class="line">0&lt;=null;//true</div><div class="line">0&gt;=null;//true</div></pre></td></tr></table></figure></p>
+<p>上面代码不是耍人吗。。。其实不然，在==中null被转化为undefined而不是对数字对待，而在&lt;=或者=&gt;中都是当做数字对待。</p>
+<p><strong>++</strong><br>虽然x++;跟x+1差不多相同，但是在某些细微的上有不同，如果x为字符串’1’，x++得到2，而x+1得到11.</p>
+<h3 id="位操作"><a href="#位操作" class="headerlink" title="位操作"></a>位操作</h3><p>想起来一个不产生新的变量交换两个值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">a=a^b;</div><div class="line">b=a^b;</div><div class="line">a=a^b;</div><div class="line"></div><div class="line">or</div><div class="line">a=a+b;</div><div class="line">b=a-b;</div><div class="line">a=a-b;</div></pre></td></tr></table></figure></p>
+<p>其实两者的大体的思路是一样的，只是第一种位操作在某种程度上快一点（但是通过代码实测数量级到达亿级差距都不是很大）</p>
+<blockquote>
+<p>所有的ascii大写字母都小于小写字母</p>
+</blockquote>
+<h3 id="eval"><a href="#eval" class="headerlink" title="eval"></a>eval</h3><p>代码中尽量不要出现。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/书/">书</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-对象到原始值的转化" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -264,25 +338,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近一直在写静态网页，搭配sass和自己造的轮子果然速度有了长足的进步，不过在实战中遇到某些css问题算查缺补漏吧。</p>
-<h3 id="z-index"><a href="#z-index" class="headerlink" title="z-index"></a>z-index</h3><p>属性很简单是层叠顺序的控制，但是我在实际开发的过程中发现不起作用了，原来是没有创建层叠上下文。如果有层叠上下文，就有这样的顺序. <img src="http://image.zhangxinxu.com/image/blog/201601/2016-01-07_235108.png" alt=""><br>层叠上下文的创建:</p>
+<h3 id="z-index"><a href="#z-index" class="headerlink" title="z-index"></a>z-index</h3><p>属性很简单是层叠顺序的控制，但是我在实际开发的过程中发现不起作用了，原来是没有创建层叠上下文。如果有层叠上下文，就有这样的顺序. <img src="http://7xpser.com1.z0.glb.clouddn.com/2016-01-07_235108.png" alt=""><br>层叠上下文的创建:</p>
 <blockquote>
-<p>1.皇亲国戚派：页面根元素天生具有层叠上下文，称之为“根层叠上下文”。<br>2.科考入选派：z-index值为数值的定位元素的传统层叠上下文。<br>3.其他当官途径：其他CSS3属性。</p>
-</blockquote>
-<p>其中3包括：<br>z-index值不为auto的flex项(父元素display:flex|inline-flex).<br>元素的opacity值不是1.<br>元素的transform值不是none.<br>元素mix-blend-mode值不是normal.<br>元素的filter值不是none.<br>元素的isolation值是isolate.<br>will-change指定的属性值为上面任意一个。<br>元素的-webkit-overflow-scrolling设为touch.</p>
-<p>然后我写了一个demo发现真的是这样z-index只会在层叠上下文创建后才会有用。然后在ie6、7上会有一个bug详见 <a href="http://blog.xuite.net/vexed/tech/22129211" target="_blank" rel="external">IE6 IE7 CSS z-index Bug</a><br><a href="http://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/" target="_blank" rel="external">参考链接</a><br>不由得感叹大牛成功都是有道理的，想快速的做学问是不行的。</p>
-<h3 id="text-align"><a href="#text-align" class="headerlink" title="text-align"></a>text-align</h3><p>text-align属性可以有效作用于inline/inline-block水平的元素。<br>然后我看到张老师的一篇文章，就停不下来了。<br><a href="http://www.zhangxinxu.com/wordpress/2011/12/position-absolute-text-align-center/" target="_blank" rel="external">相关链接</a></p>
-<h3 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h3><blockquote>
-<p>BFC元素特性表现原则就是，内部子元素再怎么翻江倒海，翻云覆雨都不会影响外部的元素。所以，避免margin穿透啊，清除浮动什么的也好理解了</p>
-<ul>
-<li>float的值不为none。</li>
-<li>overflow的值为auto,scroll或hidden。</li>
-<li>display的值为table-cell, table-caption, inline-block中的任何一个。</li>
-<li>position的值不为relative和static。</li>
-</ul>
-</blockquote>
-<p>顺带做做清除浮动的例子。</p>
-<p>###</p>
-
+<p>1.皇亲国戚派：页面根元素天生具有层叠上下文，称之为“根层叠上下文”。<br>2.科考入选派：z-index值为数值的定位元素的传统层叠上下文。<br>3.其他当官途径：其他CSS3属性。<br>
       
     </div>
     
@@ -295,6 +353,10 @@
 	</div>
 
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/30/实战中遇到的问题——css/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>全栈项目——学校教务网手机版的开发 | Web up!!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="废话不多说，直接上网站、github
+技术栈前端：
+
+materializecss
+因为用了上面那个UI库就要引入jquery
+amd模块化
+Sass
+q.js一个超级轻量的路由框架
+gulp
+gulp-sass
+gulp-concat(聚合多个js)
+gulp-uglify(压缩js)
+
+
+
+后端：总体是node用上express加上一些中间件。
+
+express
+body-parser
+coo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="全栈项目——学校教务网手机版的开发">
+<meta property="og:url" content="http://maiff.cn/2016/09/12/全栈项目——学校教务网手机版的开发/index.html">
+<meta property="og:site_name" content="Web up!!">
+<meta property="og:description" content="废话不多说，直接上网站、github
+技术栈前端：
+
+materializecss
+因为用了上面那个UI库就要引入jquery
+amd模块化
+Sass
+q.js一个超级轻量的路由框架
+gulp
+gulp-sass
+gulp-concat(聚合多个js)
+gulp-uglify(压缩js)
+
+
+
+后端：总体是node用上express加上一些中间件。
+
+express
+body-parser
+coo">
+<meta property="og:image" content="http://7xpser.com1.z0.glb.clouddn.com/%E9%A6%96%E9%A1%B5.png">
+<meta property="og:image" content="http://7xpser.com1.z0.glb.clouddn.com/%E7%99%BB%E5%BD%95.png">
+<meta property="og:image" content="http://7xpser.com1.z0.glb.clouddn.com/%E9%81%93%E9%80%94.png">
+<meta property="og:image" content="http://7xpser.com1.z0.glb.clouddn.com/%E6%88%90%E7%BB%A9.png">
+<meta property="og:image" content="http://7xpser.com1.z0.glb.clouddn.com/%E7%9B%AE%E5%BD%95.png">
+<meta property="og:image" content="http://7xpser.com1.z0.glb.clouddn.com/%E5%90%8C%E5%B9%B4%E5%90%8C%E6%9C%88%E5%90%8C%E6%97%A5%E7%94%9F.png">
+<meta property="og:image" content="http://7xpser.com1.z0.glb.clouddn.com/%E8%AE%BF%E9%97%AE%E9%87%8F.png">
+<meta property="og:updated_time" content="2016-09-13T06:17:02.070Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="全栈项目——学校教务网手机版的开发">
+<meta name="twitter:description" content="废话不多说，直接上网站、github
+技术栈前端：
+
+materializecss
+因为用了上面那个UI库就要引入jquery
+amd模块化
+Sass
+q.js一个超级轻量的路由框架
+gulp
+gulp-sass
+gulp-concat(聚合多个js)
+gulp-uglify(压缩js)
+
+
+
+后端：总体是node用上express加上一些中间件。
+
+express
+body-parser
+coo">
+<meta name="twitter:image" content="http://7xpser.com1.z0.glb.clouddn.com/%E9%A6%96%E9%A1%B5.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Web up!!" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">maiff</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+				        	<li>
+				        		<a href="http://maiff.ren/">原来的博客</a>
+				        	<li>
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/maiff" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/3169630840" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/mai-meng-xiang" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我是maiff，逗比的理想主义者…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">maiff</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/logo.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">maiff</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/maiff" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/3169630840" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/mai-meng-xiang" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-全栈项目——学校教务网手机版的开发" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/12/全栈项目——学校教务网手机版的开发/" class="article-date">
+  	<time datetime="2016-09-12T07:59:21.000Z" itemprop="datePublished">2016-09-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      全栈项目——学校教务网手机版的开发
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/项目/">项目</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>废话不多说，直接上<a href="http://www.maiff.cn" target="_blank" rel="external">网站</a>、<a href="https://github.com/maiff/DHU" target="_blank" rel="external">github</a></p>
+<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><p>前端：</p>
+<ul>
+<li>materializecss</li>
+<li>因为用了上面那个UI库就要引入jquery</li>
+<li>amd模块化</li>
+<li>Sass</li>
+<li>q.js一个超级轻量的路由框架</li>
+<li>gulp<ul>
+<li>gulp-sass</li>
+<li>gulp-concat(聚合多个js)</li>
+<li>gulp-uglify(压缩js)</li>
+</ul>
+</li>
+</ul>
+<p>后端：<br>总体是node用上express加上一些中间件。</p>
+<ul>
+<li>express<ul>
+<li>body-parser</li>
+<li>cookie-parser</li>
+</ul>
+</li>
+<li>superagent 轻量的爬虫框架</li>
+<li>superagent-charset由于学校教务处是比较老的网页还用的是GBK编码</li>
+<li>cheerio可以让后端像前端用jquery那样。</li>
+<li>nodemailer发送邮件的模块</li>
+</ul>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本来安安心心写前端，突然发现没有什么拿的出手的项目，又因为之前不能理解后端怎么跟前端配合登录或者其他的工作，于是萌生了写一个适用于手机端的教务处。<a id="more"></a><br>因为前期也没有想过做多少功能，前端就没有想模块化。不过是单页面应用。<br>后端架构一直没怎么变过</p>
+<ul>
+<li>app.js文件连接所有</li>
+<li>router文件保存路由文件</li>
+<li>不同的功能存在不同的文件夹中</li>
+</ul>
+<h3 id="教务信息"><a href="#教务信息" class="headerlink" title="教务信息"></a>教务信息</h3><p>最开始写的是爬取教务处首页的教务信息，因为我老是错过信息，曾近因为错过信息没去考试……</p>
+<h4 id="先说说后端"><a href="#先说说后端" class="headerlink" title="先说说后端"></a>先说说后端</h4><p>思路很简单，express做服务器，superagent去做爬虫，开始的时候很容易，但是我想了一下不能一有用户就爬一次教务处，而且教务信息更新的速度很慢，于是我就想定时去访问教务处，然后把爬到的标题存下来。<br>然后因为页面是单页面应用，信息都是通过ajax得到的，只要有用户访问首页通过已经存下来的的标题来渲染首页。</p>
+<h4 id="前端方面"><a href="#前端方面" class="headerlink" title="前端方面"></a>前端方面</h4><p>前端没有好说的用UI库真的很爽，一会就把首页写出来了，架构我就不说了，因为在后面有一次大改。<br><img src="http://7xpser.com1.z0.glb.clouddn.com/%E9%A6%96%E9%A1%B5.png" alt="首页"></p>
+<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>做个网站不能仅仅满足看看教务信息，于是就开始想开发教务处的别的功能，别的功能首先做的就是登录，在登录这点上要感谢星龙同学，之前一直没想通，在他的教导之下终于理解了这个机制并且顺利写出来。</p>
+<h4 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h4><p>登录是一个模块，因为登录是用cookie去验证的，同时我是单页面应用不能跳转，所以我的思路是，登录的时候向后端发送用户名密码，然后拿到用户名密码去教务处验证争取，拿到教务处的cookie发送到前端，前端设置cookie。</p>
+<h4 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h4><p>登录界面 <img src="http://7xpser.com1.z0.glb.clouddn.com/%E7%99%BB%E5%BD%95.png" alt="登录"><br>（忽视30天记住我，仅仅加了一下cookie的过期时间）<br>到现在前端也没有什么什么技术含量。我是这样写的，登录界面用一个div包括隐藏，当点击到login路由，这个div显示。<br><img src="http://7xpser.com1.z0.glb.clouddn.com/%E9%81%93%E9%80%94.png" alt="登录脑图"><br>登录成功跳转到首页（后期这里也变化了）。</p>
+<h3 id="成绩查看"><a href="#成绩查看" class="headerlink" title="成绩查看"></a>成绩查看</h3><h4 id="后端-1"><a href="#后端-1" class="headerlink" title="后端"></a>后端</h4><p>客户端ajax这个地址后端拿到cookie去访问教务网的成绩查看的页面，然后用cherrio模块去处理，把他处理成对应的json，前端拿到json，渲染页面没有什么好说的。这里说最重要的，就是后端的模块化，相互之间没有耦合，好管理。</p>
+<h4 id="前端-1"><a href="#前端-1" class="headerlink" title="前端"></a>前端</h4><p>前端在这里经历了大改。而且让我理解了为什么在单页面应用中为什么需要模板引擎。<br>下面是成绩查看的页面<br><img src="http://7xpser.com1.z0.glb.clouddn.com/%E6%88%90%E7%BB%A9.png" alt="成绩查看"><br>有没有发现他跟登录的界面差不多，而且我之前的做法是这些页面本来都是写好HTML了，第一次加载就全部加在好了，通过路由控制他们的显示隐藏。我想了想，他们是共通的，同时如果每次加一个功能，就要在html中加一段代码，很不好控制，同时随着功能的增加，页面多起来第一次加载的时间会很长，于是我就思考一种解决方式，于是我就写了下面这个类。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">//common_page.js</div><div class="line">var common_page=function(obj)&#123;</div><div class="line">	this._main=$(&apos;&lt;div&gt;&apos;,&#123;</div><div class="line">		&apos;class&apos;:&apos;all&apos;,</div><div class="line">		&apos;id&apos;:obj.id</div><div class="line">	&#125;);</div><div class="line">	var main_nav=&apos;&lt;nav &gt;&apos;+</div><div class="line">	&apos;&lt;div class=&quot;container&quot;&gt;&apos;+</div><div class="line">		&apos;&lt;a href=&quot;#!home&quot;&gt;&apos;+</div><div class="line">			&apos;&lt;img src=&quot;./public/img/arrow.png&quot; class=&quot;return&quot; &gt;&apos;+</div><div class="line">		&apos;&lt;/a&gt;&apos;+</div><div class="line">	&apos;&lt;/div&gt;&apos;+</div><div class="line">	&apos;&lt;/nav&gt;&apos;</div><div class="line">	this._main.html(main_nav);</div><div class="line"></div><div class="line">	$(&apos;&lt;div&gt;&apos;,&#123;</div><div class="line">		&apos;class&apos;:&apos;container&apos;</div><div class="line">	&#125;).html(obj.content)</div><div class="line">	.appendTo(this._main);</div><div class="line"></div><div class="line">	this._main.appendTo(&apos;body&apos;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>每次传一个对象包括这个页面的id和内部的内容就可以这么用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var getScore_page=new common_page(&#123;</div><div class="line">  id:&apos;score-container&apos;,</div><div class="line">  content:&apos;&lt;h2 class=&quot;header&quot;&gt;&apos;+</div><div class="line">    &apos;本学期成绩&apos;+</div><div class="line">  &apos;&lt;/h2&gt;&apos;+</div><div class="line">  &apos;&lt;table class=&quot;striped &quot;&gt;&apos;+</div><div class="line">          &apos;&lt;thead&gt;&apos;+</div><div class="line">            &apos;&lt;tr&gt;&apos;+</div><div class="line">                &apos;&lt;th &gt;课程名称&lt;/th&gt;&apos;+</div><div class="line">                &apos;&lt;th &gt;学分&lt;/th&gt;&apos;+</div><div class="line">                &apos;&lt;th &gt;成绩&lt;/th&gt;&apos;+</div><div class="line">            &apos;&lt;/tr&gt;&apos;+</div><div class="line">          &apos;&lt;/thead&gt;&apos;+</div><div class="line">          &apos;&lt;tbody&gt;&lt;/tbody&gt;&apos;+</div><div class="line">        &apos;&lt;/table&gt;&apos;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>然后原本控制页面的显示隐藏用的是给每个页面加一个类all然后控制路由的时候，先去隐藏所有页面然后在显示需要显示的页面，后来想想这样太损失性能，就又引入了一个对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var common_page_now_show=&#123;</div><div class="line">	ele:null</div><div class="line">&#125;;</div><div class="line">common_page_now_show.push=function(now_show)&#123;</div><div class="line">	this.ele=now_show;</div><div class="line">&#125;;</div><div class="line">common_page_now_show.show=function()&#123;</div><div class="line">	this.ele?this.ele.show():null;</div><div class="line">&#125;;</div><div class="line">common_page_now_show.hide=function()&#123;</div><div class="line">	this.ele?this.ele.hide():null;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后给common_page加了这个方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">common_page.prototype.show=function()&#123;</div><div class="line">	common_page_now_show.hide();</div><div class="line">	common_page_now_show.push(this._main);</div><div class="line">	common_page_now_show.show();</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>这样每次只要隐藏一个不会太损失性能。<br>然后随之问题又来了，我想让前端向后端一样模块化，第一个想到的就是AMD，用requeir，但是我用了materializecss,他给jquery加了方法，我查了各种资料，去issue上看，去stackoverflow都没有解决，无奈最后我每个文件都写成amd的模式，然后最后合并压缩一下。不过后来真的体会这种方法的好处，各个功能不存在耦合。每次怎么增加新功能，在main中加上路由，然后写功能，最多引入一个全局变量，不过在压缩的时候自己解决了。<br>目录结构是这样的：<br><img src="http://7xpser.com1.z0.glb.clouddn.com/%E7%9B%AE%E5%BD%95.png" alt="目录"><br>PS.tool中是对cookie操作的相关函数<br>main.js是一些路由和一些init：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">(function()&#123;</div><div class="line"></div><div class="line">		home.router_home();</div><div class="line">		login.router_login();</div><div class="line">		detail.router_u();</div><div class="line">		getScore.router_score();</div><div class="line">		getCourseTable.router_courseTable();</div><div class="line">		getGymCount.router_gymCount();</div><div class="line">		getCourse.router_course();</div><div class="line">		feedback.router_feedback();</div><div class="line">		getHowMuchBirSame.router_sameBir();</div><div class="line"></div><div class="line">		Q.init(&#123;</div><div class="line">			key:&apos;!&apos;,/* url里#和url名之间的分割符号 默认为感叹号 */</div><div class="line">			index:&apos;home&apos;,/* 首页地址 如果访问到不能访问页面也会跳回此页 */</div><div class="line">			pop:function(L)&#123;/* 每次有url变更时都会触发pop回调 */</div><div class="line">				console.log(&apos;pop 当前参数是:&apos;+L);</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line">	$(&quot;.button-collapse&quot;).sideNav();</div><div class="line"></div><div class="line">	$(document).ready(function() &#123;</div><div class="line">    	$(&apos;select&apos;).material_select();</div><div class="line">    	$(&apos;.collapsible&apos;).collapsible(&#123;</div><div class="line">      		accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style</div><div class="line">    	&#125;);</div><div class="line">  	&#125;);</div><div class="line"></div><div class="line"></div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
+<p>其中一个功能的实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">var getScore=(</div><div class="line">	function()&#123;</div><div class="line">		var getScore_page=new common_page(&#123;</div><div class="line">			id:&apos;score-container&apos;,</div><div class="line">			content:&apos;&lt;h2 class=&quot;header&quot;&gt;&apos;+</div><div class="line">				&apos;本学期成绩&apos;+</div><div class="line">			&apos;&lt;/h2&gt;&apos;+</div><div class="line">			&apos;&lt;table class=&quot;striped &quot;&gt;&apos;+</div><div class="line">              &apos;&lt;thead&gt;&apos;+</div><div class="line">                &apos;&lt;tr&gt;&apos;+</div><div class="line">                    &apos;&lt;th &gt;课程名称&lt;/th&gt;&apos;+</div><div class="line">                    &apos;&lt;th &gt;学分&lt;/th&gt;&apos;+</div><div class="line">                    &apos;&lt;th &gt;成绩&lt;/th&gt;&apos;+</div><div class="line">                &apos;&lt;/tr&gt;&apos;+</div><div class="line">              &apos;&lt;/thead&gt;&apos;+</div><div class="line">              &apos;&lt;tbody&gt;&lt;/tbody&gt;&apos;+</div><div class="line">            &apos;&lt;/table&gt;&apos;</div><div class="line">		&#125;)</div><div class="line"></div><div class="line">		function router_score()&#123;</div><div class="line">			Q.reg(&apos;score&apos;,function()&#123;</div><div class="line">				ahelp.noLoginToLogin();</div><div class="line">				getScore_page.show();</div><div class="line">				$(&apos;.button-collapse&apos;).sideNav(&apos;hide&apos;);</div><div class="line">				tool.loadingShow();</div><div class="line">				getScoreAndSetTr();</div><div class="line"></div><div class="line">			&#125;);</div><div class="line">		&#125;</div><div class="line">		function getScoreAndSetTr()&#123;</div><div class="line">			$.post(&apos;/getScore&apos;,function(data)&#123;</div><div class="line">					var courseArray=JSON.parse(data).scoreLists;//array</div><div class="line">					//console.log(data);</div><div class="line">					//console.log(typeof data);</div><div class="line">					var str=&apos;&apos;;</div><div class="line">					for(var i in courseArray)&#123;</div><div class="line">						str+=&apos;&lt;tr&gt;&lt;td&gt;&apos;+courseArray[i].name+&apos;&lt;/td&gt;&lt;td&gt;&apos;</div><div class="line">						+courseArray[i].credit+&apos;&lt;/td&gt;&lt;td&gt;&apos;</div><div class="line">						+courseArray[i].score+&apos;&lt;/td&gt;&lt;/tr&gt;&apos;;</div><div class="line">					&#125;</div><div class="line">					//console.log(&apos;1&apos;+str)</div><div class="line">					$(&apos;#score-container table tbody&apos;).html(str);</div><div class="line"></div><div class="line">					tool.loadingHide();</div><div class="line">				&#125;)</div><div class="line"></div><div class="line">		&#125;		</div><div class="line"></div><div class="line">		return&#123;</div><div class="line">			router_score:router_score</div><div class="line">		&#125;</div><div class="line"></div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
+<p>我发现很像后端的express的模式。</p>
+<h3 id="课表查看and已选课程"><a href="#课表查看and已选课程" class="headerlink" title="课表查看and已选课程"></a>课表查看and已选课程</h3><h4 id="后端-amp-前端"><a href="#后端-amp-前端" class="headerlink" title="后端&amp;前端"></a>后端&amp;前端</h4><p>还是一样拿着客户端返回的cookie去访问相应的网页，然后返回相应的html注意这次是html而不是json，因为教务处的html结构很坑，处理起来很费时费力，虽然返回html不利于复用但是，方便前端只要拿着加一些类来控制样式就好。</p>
+<h3 id="反馈意见"><a href="#反馈意见" class="headerlink" title="反馈意见"></a>反馈意见</h3><h4 id="后端-2"><a href="#后端-2" class="headerlink" title="后端"></a>后端</h4><p>用了那个nodemailer模块，从前端收到消息然后发送到我的邮箱，不过到现在都没有人给我发邮件==不知道是好还是坏。</p>
+<h4 id="前端-2"><a href="#前端-2" class="headerlink" title="前端"></a>前端</h4><p>一个input一个textare，没有什么说的，不过我想应该做个限制，不然我的邮箱可能会炸。</p>
+<h3 id="同年同月同日生"><a href="#同年同月同日生" class="headerlink" title="同年同月同日生"></a>同年同月同日生</h3><p>功能是显示全校有多少人跟你同年同月同日生，然后你可以选择共享你的信息，这样如果有跟你同年同月同日生的人访问这个页面就会看到你的一些信息。<br><img src="http://7xpser.com1.z0.glb.clouddn.com/%E5%90%8C%E5%B9%B4%E5%90%8C%E6%9C%88%E5%90%8C%E6%97%A5%E7%94%9F.png" alt="同年同月生"><br>（PS.不过后来我发现这个网页可以xss攻击，可能还可以注入==）</p>
+<h4 id="后端-3"><a href="#后端-3" class="headerlink" title="后端"></a>后端</h4><p>这个后端用了数据库，研究一天的monogoDb，你可能会好奇我的数据是哪里来的，首先图书馆系统的密码是学号，但是第一次登录需要提供姓名，这个姓名我是从体育部爬下来的他也是默认学号作为密码，有些人改了，但是还是很少人的，然后就能得到大部分人的身份证，然后截取中间的部分就是出生年月，不过有的人身份证上不对我也就不管了。</p>
+<h4 id="前端-3"><a href="#前端-3" class="headerlink" title="前端"></a>前端</h4><p>前端部分就没有什么好说的，很简单，加了一个分享功能。</p>
+<h3 id="SEO"><a href="#SEO" class="headerlink" title="SEO"></a>SEO</h3><p>众所周知，单页面应用的SEO很难做，上网发现一篇<a href="https://segmentfault.com/a/1190000006756585" target="_blank" rel="external">文章</a>说的就是这个.<br>我开始以为，百度或者谷歌不会执行我首页的js，后来发现执行了，然后用了Prerender.io我也不知道有没有用，然后加了几个友情链接，我发现我的SEO上去了，并且现在有每天有几十个通过百度搜索进的我的网页。<br>然后我通过这篇文章理解了某些东西，大部分解决方案是服务器分辨是否为搜索引擎的爬虫然后单独渲染一个页面，但是如果与原本内容不符是要受到惩罚的。</p>
+<h3 id="一些其他的功能改进"><a href="#一些其他的功能改进" class="headerlink" title="一些其他的功能改进"></a>一些其他的功能改进</h3><h4 id="访问统计"><a href="#访问统计" class="headerlink" title="访问统计"></a>访问统计</h4><p>我用的是百度统计，现在的成果很让人欣慰，这是30天的访问量：<br><img src="http://7xpser.com1.z0.glb.clouddn.com/%E8%AE%BF%E9%97%AE%E9%87%8F.png" alt="访问量"></p>
+<h4 id="记住密码"><a href="#记住密码" class="headerlink" title="记住密码"></a>记住密码</h4><p>后来一个小学妹跟我说要我做一个记住登录状态的选项，然后这里就体现出模块化的好处很好改，在tool中的设置cookie选项中加一个过期时间，然后login文件加一个30天记住我就好。</p>
+<h4 id="退出登录"><a href="#退出登录" class="headerlink" title="退出登录"></a>退出登录</h4><p>用tool中的清除所有cookie就好。</p>
+<h4 id="loading"><a href="#loading" class="headerlink" title="loading"></a>loading</h4><p>后来我发现我需要加一个loading动画，然后我发现UI库里有现成的。然后就加了。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/08/14/第二遍犀牛书——表达式与运算符/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">第二遍犀牛书——表达式与运算符</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="全栈项目——学校教务网手机版的开发" data-title="全栈项目——学校教务网手机版的开发" data-url="http://maiff.cn/2016/09/12/全栈项目——学校教务网手机版的开发/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"b242f3caa38e95a9e9dc2634d97b34ed"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 maiff
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

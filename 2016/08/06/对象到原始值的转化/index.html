@@ -1,0 +1,332 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>对象到原始值的转化 | Web up!!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="maiff">
+    
+    <meta name="description" content="以前看到这个题目顶多会想一下，不就是调用一下toString()，然后就没有下文了，所以这就是会感觉不踏实，感觉提升不大。但是我通过观看大牛的博客发现他们都有一种精神想的很全面————刨根问底。然后我最近又看了一遍犀牛书，来成长一下我刨根问底的精神。
+对象到原始值的转化无非两种情况：
+
+对象到字符串
+对象到数字">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Web up!!" title="Web up!!"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Web up!!">Web up!!</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:maiff.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/08/06/对象到原始值的转化/" title="对象到原始值的转化" itemprop="url">对象到原始值的转化</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://maiff.cn" title="maiff">maiff</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-08-06T11:21:17.000Z" itemprop="datePublished">2016-08-06</time>
+    Updated:<time datetime="2016-08-14T07:54:33.937Z" itemprop="dateModified">2016-08-14</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<p>以前看到这个题目顶多会想一下，不就是调用一下toString()，然后就没有下文了，所以这就是会感觉不踏实，感觉提升不大。但是我通过观看大牛的博客发现他们都有一种精神想的很全面————刨根问底。<br>然后我最近又看了一遍犀牛书，来成长一下我刨根问底的精神。</p>
+<p>对象到原始值的转化无非两种情况：</p>
+<ul>
+<li>对象到字符串</li>
+<li>对象到数字<a id="more"></a>
+</li>
+</ul>
+<blockquote>
+<p>javascript中对象到字符串的转换经过了如下这些步骤：<br>如果对象具有toString方法，则调用这个方法。如果它返回一个原始值，javascript将这个值转换为字符串，并返回这个字符串结果。需要注意的是，原始值到字符串的转换在下表中已经有了详细说明。<br>如果对象没有toString方法，或者这个方法并不返回一个原始值，那么javascript会调用valueOf方法。如果存在这个方法，则javascript调用它。如果返回值是原始值，javascript将这个值转换为字符串，并返回这个字符串结果。<br>否则，javascript无法从toString和valueOf获得一个原始值，因此这时抛出一个类型错误异常。<br>javascript中对象到数字的转换经过了如下这些步骤：<br>如果对象具有valueOf方法，后者返回一个原始值，则javascript将这个原始值转换为数字（如果需要的话）并返回这个数字。<br>否则，如果对象具有toString方法，后者返回一个原始值，则javascript将其转换为数字类型并返回。(见示例）<br>否则，javascript抛出一个类型异常。</p>
+</blockquote>
+<p>什么意思呢？有什么用呢？<br>比如空数组转化为数字会是0，因为数组继承了默认的valueOf()方法。<br>然后再举个例子，在运算符+和==中，如果其中有个操作符是对象会怎么样，好先不急，我们来看看+运算符的规则</p>
+<ul>
+<li>如果操作符数中有一个对象，它将转换为原始值(string、number或boolean)</li>
+<li>如果操作符数中有一个字符串，第二个操作数将转换成字符串，并且连接在一起转换成一个字符串</li>
+<li>在其它情况之下，两个操作数转换为数字并且将执行加法运算<br>详见<a href="http://www.w3cplus.com/javascript/javascriptss-addition-operator-demystified.html" target="_blank" rel="external">链接</a><br>然后就是我接下来要说的如果其中有个对象，犀牛书上的话我看了半天没看懂，后来终于看懂了，归根结底是我对+号的不了解以及我前面的化没看懂。</li>
+</ul>
+<p>在+ or ==中除了日起对象，都是对象到数字的转化过程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var r=&#123;&#125;;</div><div class="line">r.valueOf=function()&#123;</div><div class="line">	return 3;</div><div class="line">&#125;</div><div class="line">console.log(3+r);//6</div></pre></td></tr></table></figure></p>
+<p>那日期是什么样了，看下面代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var date=new Date();</div><div class="line">console.log(date.valueOf());//1470484509871</div><div class="line"></div><div class="line">console.log(date+4);//Sat Aug 06 2016 19:56:43 GMT+0800 (中国标准时间)4</div></pre></td></tr></table></figure></p>
+<p>上面代码如果按照我上面说的，最后打印的就是1470484509875，可不是这个，原因是日期对象是预设对象，是对象转化为字符串的过程。</p>
+<p>那我不经有有个疑问如果操作符一个是对象一个是日期对象会怎么样，同理日期对象依旧按对象转变为字符串的过程，而正常对象安转变为数字的过程，这个告诉我们对象转为原始值在+中跟操作数无关，跟操作符有关。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var date=new Date();</div><div class="line">var r=&#123;&#125;;</div><div class="line">r.valueOf=function()&#123;</div><div class="line">	return 3;</div><div class="line">&#125;;</div><div class="line">r.toString=function()&#123;</div><div class="line">	return 4;</div><div class="line">&#125;</div><div class="line">console.log(3+r);//6</div><div class="line">console.log(date.valueOf());//1470484509871</div><div class="line"></div><div class="line">console.log(r+date);//3Sat Aug 06 2016 19:56:43 GMT+0800 (中国标准时间)</div><div class="line">console.log(date+r);//Sat Aug 06 2016 19:56:43 GMT+0800 (中国标准时间)3</div></pre></td></tr></table></figure></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/JS/">JS</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://maiff.cn/2016/08/06/对象到原始值的转化/" data-title="对象到原始值的转化 | Web up!!" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/08/14/第二遍犀牛书——表达式与运算符/" title="第二遍犀牛书——表达式与运算符">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  第二遍犀牛书——表达式与运算符</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/07/30/实战中遇到的问题——css/"  title="实战中遇到的问题——css">
+ <strong>NEXT:</strong><br/> 
+ <span>实战中遇到的问题——css
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/JS/" title="JS">JS<sup>2</sup></a></li>
+		
+			<li><a href="/categories/书/" title="书">书<sup>4</sup></a></li>
+		
+			<li><a href="/categories/生活/" title="生活">生活<sup>2</sup></a></li>
+		
+			<li><a href="/categories/项目/" title="项目">项目<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="http://maiff.cn" target="_blank" title="maiff">maiff</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,330 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>实战中遇到的问题——css | Web up!!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="maiff">
+    
+    <meta name="description" content="最近一直在写静态网页，搭配sass和自己造的轮子果然速度有了长足的进步，不过在实战中遇到某些css问题算查缺补漏吧。
+z-index属性很简单是层叠顺序的控制，但是我在实际开发的过程中发现不起作用了，原来是没有创建层叠上下文。如果有层叠上下文，就有这样的顺序. 层叠上下文的创建:
+
+1.皇亲国戚派：页面根元素天生具有层叠上下文，称之为“根层叠上下文”。2.科考入选派：z-index值为数值的定位元素的传统层叠上下文。3.其他当官途径：其他CSS3属性。">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Web up!!" title="Web up!!"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Web up!!">Web up!!</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:maiff.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/07/30/实战中遇到的问题——css/" title="实战中遇到的问题——css" itemprop="url">实战中遇到的问题——css</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://maiff.cn" title="maiff">maiff</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-07-30T02:20:10.000Z" itemprop="datePublished">2016-07-30</time>
+    Updated:<time datetime="2016-08-14T07:54:27.848Z" itemprop="dateModified">2016-08-14</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#z-index"><span class="toc-number">1.</span> <span class="toc-text">z-index</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#text-align"><span class="toc-number">2.</span> <span class="toc-text">text-align</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFC"><span class="toc-number">3.</span> <span class="toc-text">BFC</span></a></li></ol>
+		</div>
+		
+		<p>最近一直在写静态网页，搭配sass和自己造的轮子果然速度有了长足的进步，不过在实战中遇到某些css问题算查缺补漏吧。</p>
+<h3 id="z-index"><a href="#z-index" class="headerlink" title="z-index"></a>z-index</h3><p>属性很简单是层叠顺序的控制，但是我在实际开发的过程中发现不起作用了，原来是没有创建层叠上下文。如果有层叠上下文，就有这样的顺序. <img src="http://7xpser.com1.z0.glb.clouddn.com/2016-01-07_235108.png" alt=""><br>层叠上下文的创建:</p>
+<blockquote>
+<p>1.皇亲国戚派：页面根元素天生具有层叠上下文，称之为“根层叠上下文”。<br>2.科考入选派：z-index值为数值的定位元素的传统层叠上下文。<br>3.其他当官途径：其他CSS3属性。<br><a id="more"></a></p>
+</blockquote>
+<p>其中3包括：<br>z-index值不为auto的flex项(父元素display:flex|inline-flex).<br>元素的opacity值不是1.<br>元素的transform值不是none.<br>元素mix-blend-mode值不是normal.<br>元素的filter值不是none.<br>元素的isolation值是isolate.<br>will-change指定的属性值为上面任意一个。<br>元素的-webkit-overflow-scrolling设为touch.</p>
+<p>然后我写了一个demo发现真的是这样z-index只会在层叠上下文创建后才会有用。然后在ie6、7上会有一个bug详见 <a href="http://blog.xuite.net/vexed/tech/22129211" target="_blank" rel="external">IE6 IE7 CSS z-index Bug</a><br><a href="http://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/" target="_blank" rel="external">参考链接</a><br>不由得感叹大牛成功都是有道理的，想快速的做学问是不行的。</p>
+<h3 id="text-align"><a href="#text-align" class="headerlink" title="text-align"></a>text-align</h3><p>text-align属性可以有效作用于inline/inline-block水平的元素。<br>然后我看到张老师的一篇文章，就停不下来了。<br><a href="http://www.zhangxinxu.com/wordpress/2011/12/position-absolute-text-align-center/" target="_blank" rel="external">相关链接</a></p>
+<h3 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h3><blockquote>
+<p>BFC元素特性表现原则就是，内部子元素再怎么翻江倒海，翻云覆雨都不会影响外部的元素。所以，避免margin穿透啊，清除浮动什么的也好理解了</p>
+<ul>
+<li>float的值不为none。</li>
+<li>overflow的值为auto,scroll或hidden。</li>
+<li>display的值为table-cell, table-caption, inline-block中的任何一个。</li>
+<li>position的值不为relative和static。</li>
+</ul>
+</blockquote>
+<p>顺带做做清除浮动的例子。</p>
+<p>###</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/CSS/">CSS</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://maiff.cn/2016/07/30/实战中遇到的问题——css/" data-title="实战中遇到的问题——css | Web up!!" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/08/06/对象到原始值的转化/" title="对象到原始值的转化">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  对象到原始值的转化</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/07/19/JS不同模块化的细节思考/"  title="JS不同模块化的细节思考">
+ <strong>NEXT:</strong><br/> 
+ <span>JS不同模块化的细节思考
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#z-index"><span class="toc-number">1.</span> <span class="toc-text">z-index</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#text-align"><span class="toc-number">2.</span> <span class="toc-text">text-align</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFC"><span class="toc-number">3.</span> <span class="toc-text">BFC</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/JS/" title="JS">JS<sup>2</sup></a></li>
+		
+			<li><a href="/categories/书/" title="书">书<sup>4</sup></a></li>
+		
+			<li><a href="/categories/生活/" title="生活">生活<sup>2</sup></a></li>
+		
+			<li><a href="/categories/项目/" title="项目">项目<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="http://maiff.cn" target="_blank" title="maiff">maiff</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

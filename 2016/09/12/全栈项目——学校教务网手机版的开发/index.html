@@ -1,0 +1,403 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>全栈项目——学校教务网手机版的开发 | Web up!!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="maiff">
+    
+    <meta name="description" content="废话不多说，直接上网站、github
+技术栈前端：
+
+materializecss
+因为用了上面那个UI库就要引入jquery
+amd模块化
+Sass
+q.js一个超级轻量的路由框架
+gulp
+gulp-sass
+gulp-concat(聚合多个js)
+gulp-uglify(压缩js)
+
+
+
+后端：总体是node用上express加上一些中间件。
+
+express
+body-parser
+cookie-parser
+
+
+superagent 轻量的爬虫框架
+superagent-charset由于学校教务处是比较老的网页还用的是GBK编码
+cheerio可以让后端像前端用jquery那样。
+nodemailer发送邮件的模块
+
+前言本来安安心心写前端，突然发现没有什么拿的出手的项目，又因为之前不能理解后端怎么跟前端配合登录或者其他的工作，于是萌生了写一个适用于手机端的教务处。">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Web up!!" title="Web up!!"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Web up!!">Web up!!</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:maiff.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/12/全栈项目——学校教务网手机版的开发/" title="全栈项目——学校教务网手机版的开发" itemprop="url">全栈项目——学校教务网手机版的开发</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://maiff.cn" title="maiff">maiff</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-09-12T07:59:21.000Z" itemprop="datePublished">2016-09-12</time>
+    Updated:<time datetime="2016-09-29T10:53:31.618Z" itemprop="dateModified">2016-09-29</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#技术栈"><span class="toc-number">1.</span> <span class="toc-text">技术栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">2.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#教务信息"><span class="toc-number">2.1.</span> <span class="toc-text">教务信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#先说说后端"><span class="toc-number">2.1.1.</span> <span class="toc-text">先说说后端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前端方面"><span class="toc-number">2.1.2.</span> <span class="toc-text">前端方面</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登录"><span class="toc-number">2.2.</span> <span class="toc-text">登录</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#后端"><span class="toc-number">2.2.1.</span> <span class="toc-text">后端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前端"><span class="toc-number">2.2.2.</span> <span class="toc-text">前端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#成绩查看"><span class="toc-number">2.3.</span> <span class="toc-text">成绩查看</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#后端-1"><span class="toc-number">2.3.1.</span> <span class="toc-text">后端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前端-1"><span class="toc-number">2.3.2.</span> <span class="toc-text">前端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#课表查看and已选课程"><span class="toc-number">2.4.</span> <span class="toc-text">课表查看and已选课程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#后端-amp-前端"><span class="toc-number">2.4.1.</span> <span class="toc-text">后端&前端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反馈意见"><span class="toc-number">2.5.</span> <span class="toc-text">反馈意见</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#后端-2"><span class="toc-number">2.5.1.</span> <span class="toc-text">后端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前端-2"><span class="toc-number">2.5.2.</span> <span class="toc-text">前端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同年同月同日生"><span class="toc-number">2.6.</span> <span class="toc-text">同年同月同日生</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#后端-3"><span class="toc-number">2.6.1.</span> <span class="toc-text">后端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前端-3"><span class="toc-number">2.6.2.</span> <span class="toc-text">前端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SEO"><span class="toc-number">2.7.</span> <span class="toc-text">SEO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些其他的功能改进"><span class="toc-number">2.8.</span> <span class="toc-text">一些其他的功能改进</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#访问统计"><span class="toc-number">2.8.1.</span> <span class="toc-text">访问统计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#记住密码"><span class="toc-number">2.8.2.</span> <span class="toc-text">记住密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#退出登录"><span class="toc-number">2.8.3.</span> <span class="toc-text">退出登录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#loading"><span class="toc-number">2.8.4.</span> <span class="toc-text">loading</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#增加功能"><span class="toc-number">2.9.</span> <span class="toc-text">增加功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库"><span class="toc-number">2.9.1.</span> <span class="toc-text">数据库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMS"><span class="toc-number">2.10.</span> <span class="toc-text">CMS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ubuntu"><span class="toc-number">2.11.</span> <span class="toc-text">ubuntu</span></a></li></ol></li></ol>
+		</div>
+		
+		<p>废话不多说，直接上<a href="http://www.maiff.cn" target="_blank" rel="external">网站</a>、<a href="https://github.com/maiff/DHU" target="_blank" rel="external">github</a></p>
+<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><p>前端：</p>
+<ul>
+<li>materializecss</li>
+<li>因为用了上面那个UI库就要引入jquery</li>
+<li>amd模块化</li>
+<li>Sass</li>
+<li>q.js一个超级轻量的路由框架</li>
+<li>gulp<ul>
+<li>gulp-sass</li>
+<li>gulp-concat(聚合多个js)</li>
+<li>gulp-uglify(压缩js)</li>
+</ul>
+</li>
+</ul>
+<p>后端：<br>总体是node用上express加上一些中间件。</p>
+<ul>
+<li>express<ul>
+<li>body-parser</li>
+<li>cookie-parser</li>
+</ul>
+</li>
+<li>superagent 轻量的爬虫框架</li>
+<li>superagent-charset由于学校教务处是比较老的网页还用的是GBK编码</li>
+<li>cheerio可以让后端像前端用jquery那样。</li>
+<li>nodemailer发送邮件的模块</li>
+</ul>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本来安安心心写前端，突然发现没有什么拿的出手的项目，又因为之前不能理解后端怎么跟前端配合登录或者其他的工作，于是萌生了写一个适用于手机端的教务处。<a id="more"></a><br>因为前期也没有想过做多少功能，前端就没有想模块化。不过是单页面应用。<br>后端架构一直没怎么变过</p>
+<ul>
+<li>app.js文件连接所有</li>
+<li>router文件保存路由文件</li>
+<li>不同的功能存在不同的文件夹中</li>
+</ul>
+<h3 id="教务信息"><a href="#教务信息" class="headerlink" title="教务信息"></a>教务信息</h3><p>最开始写的是爬取教务处首页的教务信息，因为我老是错过信息，曾近因为错过信息没去考试……</p>
+<h4 id="先说说后端"><a href="#先说说后端" class="headerlink" title="先说说后端"></a>先说说后端</h4><p>思路很简单，express做服务器，superagent去做爬虫，开始的时候很容易，但是我想了一下不能一有用户就爬一次教务处，而且教务信息更新的速度很慢，于是我就想定时去访问教务处，然后把爬到的标题存下来。<br>然后因为页面是单页面应用，信息都是通过ajax得到的，只要有用户访问首页通过已经存下来的的标题来渲染首页。</p>
+<h4 id="前端方面"><a href="#前端方面" class="headerlink" title="前端方面"></a>前端方面</h4><p>前端没有好说的用UI库真的很爽，一会就把首页写出来了，架构我就不说了，因为在后面有一次大改。<br><img src="http://7xpser.com1.z0.glb.clouddn.com/%E9%A6%96%E9%A1%B5.png" alt="首页"></p>
+<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>做个网站不能仅仅满足看看教务信息，于是就开始想开发教务处的别的功能，别的功能首先做的就是登录，在登录这点上要感谢星龙同学，之前一直没想通，在他的教导之下终于理解了这个机制并且顺利写出来。</p>
+<h4 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h4><p>登录是一个模块，因为登录是用cookie去验证的，同时我是单页面应用不能跳转，所以我的思路是，登录的时候向后端发送用户名密码，然后拿到用户名密码去教务处验证争取，拿到教务处的cookie发送到前端，前端设置cookie。</p>
+<h4 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h4><p>登录界面 <img src="http://7xpser.com1.z0.glb.clouddn.com/%E7%99%BB%E5%BD%95.png" alt="登录"><br>（忽视30天记住我，仅仅加了一下cookie的过期时间）<br>到现在前端也没有什么什么技术含量。我是这样写的，登录界面用一个div包括隐藏，当点击到login路由，这个div显示。<br><img src="http://7xpser.com1.z0.glb.clouddn.com/%E9%81%93%E9%80%94.png" alt="登录脑图"><br>登录成功跳转到首页（后期这里也变化了）。</p>
+<h3 id="成绩查看"><a href="#成绩查看" class="headerlink" title="成绩查看"></a>成绩查看</h3><h4 id="后端-1"><a href="#后端-1" class="headerlink" title="后端"></a>后端</h4><p>客户端ajax这个地址后端拿到cookie去访问教务网的成绩查看的页面，然后用cherrio模块去处理，把他处理成对应的json，前端拿到json，渲染页面没有什么好说的。这里说最重要的，就是后端的模块化，相互之间没有耦合，好管理。</p>
+<h4 id="前端-1"><a href="#前端-1" class="headerlink" title="前端"></a>前端</h4><p>前端在这里经历了大改。而且让我理解了为什么在单页面应用中为什么需要模板引擎。<br>下面是成绩查看的页面<br><img src="http://7xpser.com1.z0.glb.clouddn.com/%E6%88%90%E7%BB%A9.png" alt="成绩查看"><br>有没有发现他跟登录的界面差不多，而且我之前的做法是这些页面本来都是写好HTML了，第一次加载就全部加在好了，通过路由控制他们的显示隐藏。我想了想，他们是共通的，同时如果每次加一个功能，就要在html中加一段代码，很不好控制，同时随着功能的增加，页面多起来第一次加载的时间会很长，于是我就思考一种解决方式，于是我就写了下面这个类。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">//common_page.js</div><div class="line">var common_page=function(obj)&#123;</div><div class="line">	this._main=$(&apos;&lt;div&gt;&apos;,&#123;</div><div class="line">		&apos;class&apos;:&apos;all&apos;,</div><div class="line">		&apos;id&apos;:obj.id</div><div class="line">	&#125;);</div><div class="line">	var main_nav=&apos;&lt;nav &gt;&apos;+</div><div class="line">	&apos;&lt;div class=&quot;container&quot;&gt;&apos;+</div><div class="line">		&apos;&lt;a href=&quot;#!home&quot;&gt;&apos;+</div><div class="line">			&apos;&lt;img src=&quot;./public/img/arrow.png&quot; class=&quot;return&quot; &gt;&apos;+</div><div class="line">		&apos;&lt;/a&gt;&apos;+</div><div class="line">	&apos;&lt;/div&gt;&apos;+</div><div class="line">	&apos;&lt;/nav&gt;&apos;</div><div class="line">	this._main.html(main_nav);</div><div class="line"></div><div class="line">	$(&apos;&lt;div&gt;&apos;,&#123;</div><div class="line">		&apos;class&apos;:&apos;container&apos;</div><div class="line">	&#125;).html(obj.content)</div><div class="line">	.appendTo(this._main);</div><div class="line"></div><div class="line">	this._main.appendTo(&apos;body&apos;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>每次传一个对象包括这个页面的id和内部的内容就可以这么用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var getScore_page=new common_page(&#123;</div><div class="line">  id:&apos;score-container&apos;,</div><div class="line">  content:&apos;&lt;h2 class=&quot;header&quot;&gt;&apos;+</div><div class="line">    &apos;本学期成绩&apos;+</div><div class="line">  &apos;&lt;/h2&gt;&apos;+</div><div class="line">  &apos;&lt;table class=&quot;striped &quot;&gt;&apos;+</div><div class="line">          &apos;&lt;thead&gt;&apos;+</div><div class="line">            &apos;&lt;tr&gt;&apos;+</div><div class="line">                &apos;&lt;th &gt;课程名称&lt;/th&gt;&apos;+</div><div class="line">                &apos;&lt;th &gt;学分&lt;/th&gt;&apos;+</div><div class="line">                &apos;&lt;th &gt;成绩&lt;/th&gt;&apos;+</div><div class="line">            &apos;&lt;/tr&gt;&apos;+</div><div class="line">          &apos;&lt;/thead&gt;&apos;+</div><div class="line">          &apos;&lt;tbody&gt;&lt;/tbody&gt;&apos;+</div><div class="line">        &apos;&lt;/table&gt;&apos;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>然后原本控制页面的显示隐藏用的是给每个页面加一个类all然后控制路由的时候，先去隐藏所有页面然后在显示需要显示的页面，后来想想这样太损失性能，就又引入了一个对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var common_page_now_show=&#123;</div><div class="line">	ele:null</div><div class="line">&#125;;</div><div class="line">common_page_now_show.push=function(now_show)&#123;</div><div class="line">	this.ele=now_show;</div><div class="line">&#125;;</div><div class="line">common_page_now_show.show=function()&#123;</div><div class="line">	this.ele?this.ele.show():null;</div><div class="line">&#125;;</div><div class="line">common_page_now_show.hide=function()&#123;</div><div class="line">	this.ele?this.ele.hide():null;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后给common_page加了这个方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">common_page.prototype.show=function()&#123;</div><div class="line">	common_page_now_show.hide();</div><div class="line">	common_page_now_show.push(this._main);</div><div class="line">	common_page_now_show.show();</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>这样每次只要隐藏一个不会太损失性能。<br>然后随之问题又来了，我想让前端向后端一样模块化，第一个想到的就是AMD，用requeir，但是我用了materializecss,他给jquery加了方法，我查了各种资料，去issue上看，去stackoverflow都没有解决，无奈最后我每个文件都写成amd的模式，然后最后合并压缩一下。不过后来真的体会这种方法的好处，各个功能不存在耦合。每次怎么增加新功能，在main中加上路由，然后写功能，最多引入一个全局变量，不过在压缩的时候自己解决了。<br>目录结构是这样的：<br><img src="http://7xpser.com1.z0.glb.clouddn.com/%E7%9B%AE%E5%BD%95.png" alt="目录"><br>PS.tool中是对cookie操作的相关函数<br>main.js是一些路由和一些init：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">(function()&#123;</div><div class="line"></div><div class="line">		home.router_home();</div><div class="line">		login.router_login();</div><div class="line">		detail.router_u();</div><div class="line">		getScore.router_score();</div><div class="line">		getCourseTable.router_courseTable();</div><div class="line">		getGymCount.router_gymCount();</div><div class="line">		getCourse.router_course();</div><div class="line">		feedback.router_feedback();</div><div class="line">		getHowMuchBirSame.router_sameBir();</div><div class="line"></div><div class="line">		Q.init(&#123;</div><div class="line">			key:&apos;!&apos;,/* url里#和url名之间的分割符号 默认为感叹号 */</div><div class="line">			index:&apos;home&apos;,/* 首页地址 如果访问到不能访问页面也会跳回此页 */</div><div class="line">			pop:function(L)&#123;/* 每次有url变更时都会触发pop回调 */</div><div class="line">				console.log(&apos;pop 当前参数是:&apos;+L);</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line">	$(&quot;.button-collapse&quot;).sideNav();</div><div class="line"></div><div class="line">	$(document).ready(function() &#123;</div><div class="line">    	$(&apos;select&apos;).material_select();</div><div class="line">    	$(&apos;.collapsible&apos;).collapsible(&#123;</div><div class="line">      		accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style</div><div class="line">    	&#125;);</div><div class="line">  	&#125;);</div><div class="line"></div><div class="line"></div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
+<p>其中一个功能的实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">var getScore=(</div><div class="line">	function()&#123;</div><div class="line">		var getScore_page=new common_page(&#123;</div><div class="line">			id:&apos;score-container&apos;,</div><div class="line">			content:&apos;&lt;h2 class=&quot;header&quot;&gt;&apos;+</div><div class="line">				&apos;本学期成绩&apos;+</div><div class="line">			&apos;&lt;/h2&gt;&apos;+</div><div class="line">			&apos;&lt;table class=&quot;striped &quot;&gt;&apos;+</div><div class="line">              &apos;&lt;thead&gt;&apos;+</div><div class="line">                &apos;&lt;tr&gt;&apos;+</div><div class="line">                    &apos;&lt;th &gt;课程名称&lt;/th&gt;&apos;+</div><div class="line">                    &apos;&lt;th &gt;学分&lt;/th&gt;&apos;+</div><div class="line">                    &apos;&lt;th &gt;成绩&lt;/th&gt;&apos;+</div><div class="line">                &apos;&lt;/tr&gt;&apos;+</div><div class="line">              &apos;&lt;/thead&gt;&apos;+</div><div class="line">              &apos;&lt;tbody&gt;&lt;/tbody&gt;&apos;+</div><div class="line">            &apos;&lt;/table&gt;&apos;</div><div class="line">		&#125;)</div><div class="line"></div><div class="line">		function router_score()&#123;</div><div class="line">			Q.reg(&apos;score&apos;,function()&#123;</div><div class="line">				ahelp.noLoginToLogin();</div><div class="line">				getScore_page.show();</div><div class="line">				$(&apos;.button-collapse&apos;).sideNav(&apos;hide&apos;);</div><div class="line">				tool.loadingShow();</div><div class="line">				getScoreAndSetTr();</div><div class="line"></div><div class="line">			&#125;);</div><div class="line">		&#125;</div><div class="line">		function getScoreAndSetTr()&#123;</div><div class="line">			$.post(&apos;/getScore&apos;,function(data)&#123;</div><div class="line">					var courseArray=JSON.parse(data).scoreLists;//array</div><div class="line">					//console.log(data);</div><div class="line">					//console.log(typeof data);</div><div class="line">					var str=&apos;&apos;;</div><div class="line">					for(var i in courseArray)&#123;</div><div class="line">						str+=&apos;&lt;tr&gt;&lt;td&gt;&apos;+courseArray[i].name+&apos;&lt;/td&gt;&lt;td&gt;&apos;</div><div class="line">						+courseArray[i].credit+&apos;&lt;/td&gt;&lt;td&gt;&apos;</div><div class="line">						+courseArray[i].score+&apos;&lt;/td&gt;&lt;/tr&gt;&apos;;</div><div class="line">					&#125;</div><div class="line">					//console.log(&apos;1&apos;+str)</div><div class="line">					$(&apos;#score-container table tbody&apos;).html(str);</div><div class="line"></div><div class="line">					tool.loadingHide();</div><div class="line">				&#125;)</div><div class="line"></div><div class="line">		&#125;		</div><div class="line"></div><div class="line">		return&#123;</div><div class="line">			router_score:router_score</div><div class="line">		&#125;</div><div class="line"></div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
+<p>我发现很像后端的express的模式。</p>
+<h3 id="课表查看and已选课程"><a href="#课表查看and已选课程" class="headerlink" title="课表查看and已选课程"></a>课表查看and已选课程</h3><h4 id="后端-amp-前端"><a href="#后端-amp-前端" class="headerlink" title="后端&amp;前端"></a>后端&amp;前端</h4><p>还是一样拿着客户端返回的cookie去访问相应的网页，然后返回相应的html注意这次是html而不是json，因为教务处的html结构很坑，处理起来很费时费力，虽然返回html不利于复用但是，方便前端只要拿着加一些类来控制样式就好。</p>
+<h3 id="反馈意见"><a href="#反馈意见" class="headerlink" title="反馈意见"></a>反馈意见</h3><h4 id="后端-2"><a href="#后端-2" class="headerlink" title="后端"></a>后端</h4><p>用了那个nodemailer模块，从前端收到消息然后发送到我的邮箱，不过到现在都没有人给我发邮件==不知道是好还是坏。</p>
+<h4 id="前端-2"><a href="#前端-2" class="headerlink" title="前端"></a>前端</h4><p>一个input一个textare，没有什么说的，不过我想应该做个限制，不然我的邮箱可能会炸。</p>
+<h3 id="同年同月同日生"><a href="#同年同月同日生" class="headerlink" title="同年同月同日生"></a>同年同月同日生</h3><p>功能是显示全校有多少人跟你同年同月同日生，然后你可以选择共享你的信息，这样如果有跟你同年同月同日生的人访问这个页面就会看到你的一些信息。<br><img src="http://7xpser.com1.z0.glb.clouddn.com/%E5%90%8C%E5%B9%B4%E5%90%8C%E6%9C%88%E5%90%8C%E6%97%A5%E7%94%9F.png" alt="同年同月生"><br>（PS.不过后来我发现这个网页可以xss攻击，可能还可以注入==）</p>
+<h4 id="后端-3"><a href="#后端-3" class="headerlink" title="后端"></a>后端</h4><p>这个后端用了数据库，研究一天的monogoDb，你可能会好奇我的数据是哪里来的，首先图书馆系统的密码是学号，但是第一次登录需要提供姓名，这个姓名我是从体育部爬下来的他也是默认学号作为密码，有些人改了，但是还是很少人的，然后就能得到大部分人的身份证，然后截取中间的部分就是出生年月，不过有的人身份证上不对我也就不管了。</p>
+<h4 id="前端-3"><a href="#前端-3" class="headerlink" title="前端"></a>前端</h4><p>前端部分就没有什么好说的，很简单，加了一个分享功能。</p>
+<h3 id="SEO"><a href="#SEO" class="headerlink" title="SEO"></a>SEO</h3><p>众所周知，单页面应用的SEO很难做，上网发现一篇<a href="https://segmentfault.com/a/1190000006756585" target="_blank" rel="external">文章</a>说的就是这个.<br>我开始以为，百度或者谷歌不会执行我首页的js，后来发现执行了，然后用了Prerender.io我也不知道有没有用，然后加了几个友情链接，我发现我的SEO上去了，并且现在有每天有几十个通过百度搜索进的我的网页。<br>然后我通过这篇文章理解了某些东西，大部分解决方案是服务器分辨是否为搜索引擎的爬虫然后单独渲染一个页面，但是如果与原本内容不符是要受到惩罚的。</p>
+<h3 id="一些其他的功能改进"><a href="#一些其他的功能改进" class="headerlink" title="一些其他的功能改进"></a>一些其他的功能改进</h3><h4 id="访问统计"><a href="#访问统计" class="headerlink" title="访问统计"></a>访问统计</h4><p>我用的是百度统计，现在的成果很让人欣慰，这是30天的访问量：<br><img src="http://7xpser.com1.z0.glb.clouddn.com/%E8%AE%BF%E9%97%AE%E9%87%8F.png" alt="访问量"></p>
+<h4 id="记住密码"><a href="#记住密码" class="headerlink" title="记住密码"></a>记住密码</h4><p>后来一个小学妹跟我说要我做一个记住登录状态的选项，然后这里就体现出模块化的好处很好改，在tool中的设置cookie选项中加一个过期时间，然后login文件加一个30天记住我就好。</p>
+<h4 id="退出登录"><a href="#退出登录" class="headerlink" title="退出登录"></a>退出登录</h4><p>用tool中的清除所有cookie就好。</p>
+<h4 id="loading"><a href="#loading" class="headerlink" title="loading"></a>loading</h4><p>后来我发现我需要加一个loading动画，然后我发现UI库里有现成的。然后就加了。</p>
+<hr>
+<h3 id="增加功能"><a href="#增加功能" class="headerlink" title="增加功能"></a>增加功能</h3><ul>
+<li>数据库（monogoDb）</li>
+<li>CMS</li>
+<li>远程主机换成ubuntu<br>炫耀一下访问量已经有5000了<img src="http://www.maiff.cn/Screenshot_2016-09-29-18-29-12.png" alt=""></li>
+</ul>
+<p>为什么我要突然加数据库的功能呢，因为学校的教务网最近必须在内网访问，很是不方便，于是我把一些必要的信息保存下来．</p>
+<h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><p>monogoDb好多坑啊，不过最后终于在我的服务器上架起来了数据库．在用monogoose连接数据库的时候出现问题，在实际的运用中，分成一个单独模块，在最开始的时候连接一次就好，而我最开始的时候，每连接一次都关闭，导致了很多问题．</p>
+<h3 id="CMS"><a href="#CMS" class="headerlink" title="CMS"></a>CMS</h3><p>现在的首页我可以自己发布信息了，然后有了数据库就很简单了．</p>
+<h3 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h3><p>ubuntu真的是一个好东西．</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/项目/">项目</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://maiff.cn/2016/09/12/全栈项目——学校教务网手机版的开发/" data-title="全栈项目——学校教务网手机版的开发 | Web up!!" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/09/16/读书笔记——2016-09-26/" title="读书笔记——2016.09.26">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  读书笔记——2016.09.26</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/08/14/第二遍犀牛书——表达式与运算符/"  title="第二遍犀牛书——表达式与运算符">
+ <strong>NEXT:</strong><br/> 
+ <span>第二遍犀牛书——表达式与运算符
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#技术栈"><span class="toc-number">1.</span> <span class="toc-text">技术栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">2.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#教务信息"><span class="toc-number">2.1.</span> <span class="toc-text">教务信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#先说说后端"><span class="toc-number">2.1.1.</span> <span class="toc-text">先说说后端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前端方面"><span class="toc-number">2.1.2.</span> <span class="toc-text">前端方面</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登录"><span class="toc-number">2.2.</span> <span class="toc-text">登录</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#后端"><span class="toc-number">2.2.1.</span> <span class="toc-text">后端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前端"><span class="toc-number">2.2.2.</span> <span class="toc-text">前端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#成绩查看"><span class="toc-number">2.3.</span> <span class="toc-text">成绩查看</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#后端-1"><span class="toc-number">2.3.1.</span> <span class="toc-text">后端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前端-1"><span class="toc-number">2.3.2.</span> <span class="toc-text">前端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#课表查看and已选课程"><span class="toc-number">2.4.</span> <span class="toc-text">课表查看and已选课程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#后端-amp-前端"><span class="toc-number">2.4.1.</span> <span class="toc-text">后端&前端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反馈意见"><span class="toc-number">2.5.</span> <span class="toc-text">反馈意见</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#后端-2"><span class="toc-number">2.5.1.</span> <span class="toc-text">后端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前端-2"><span class="toc-number">2.5.2.</span> <span class="toc-text">前端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同年同月同日生"><span class="toc-number">2.6.</span> <span class="toc-text">同年同月同日生</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#后端-3"><span class="toc-number">2.6.1.</span> <span class="toc-text">后端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前端-3"><span class="toc-number">2.6.2.</span> <span class="toc-text">前端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SEO"><span class="toc-number">2.7.</span> <span class="toc-text">SEO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些其他的功能改进"><span class="toc-number">2.8.</span> <span class="toc-text">一些其他的功能改进</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#访问统计"><span class="toc-number">2.8.1.</span> <span class="toc-text">访问统计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#记住密码"><span class="toc-number">2.8.2.</span> <span class="toc-text">记住密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#退出登录"><span class="toc-number">2.8.3.</span> <span class="toc-text">退出登录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#loading"><span class="toc-number">2.8.4.</span> <span class="toc-text">loading</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#增加功能"><span class="toc-number">2.9.</span> <span class="toc-text">增加功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库"><span class="toc-number">2.9.1.</span> <span class="toc-text">数据库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMS"><span class="toc-number">2.10.</span> <span class="toc-text">CMS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ubuntu"><span class="toc-number">2.11.</span> <span class="toc-text">ubuntu</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/JS/" title="JS">JS<sup>2</sup></a></li>
+		
+			<li><a href="/categories/书/" title="书">书<sup>4</sup></a></li>
+		
+			<li><a href="/categories/生活/" title="生活">生活<sup>2</sup></a></li>
+		
+			<li><a href="/categories/项目/" title="项目">项目<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="http://maiff.cn" target="_blank" title="maiff">maiff</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

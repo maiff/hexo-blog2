@@ -1,0 +1,334 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>类的继承和es6的类 | Web up!!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="maiff">
+    
+    <meta name="description" content="ES5的类看完类的继承这一章，我不禁思考我之前类的应用环境是否正确，同时真正做类的继承的时候,需要好好思考。抽象能力真的很重要。
+类的继承类的继承有面向对象式的继承和原型继承。
+面向对象继承12345678function extend(subClass,superClass)&amp;#123;    v">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/logo.jpg">
+    
+    
+    <link rel="apple-touch-icon" href="/logo.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/logo.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/logo.jpg" alt="Web up!!" title="Web up!!"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Web up!!">Web up!!</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					<li><a href="http://maiff.ren">原来的博客</a></li>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//baidu.com/s" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="wd" autocomplete="off" maxlength="20" placeholder="搜索" />
+                        <input name=tn type=hidden value="bds">
+                        <input name=cl type=hidden value="3">
+                        <input name=ct type=hidden value="2097152">
+						<input type="hidden" name="si" value="maiff.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/10/11/类的继承和es6的类/" title="类的继承和es6的类" itemprop="url">类的继承和es6的类</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://maiff.cn" title="maiff">maiff</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-10-11T13:22:53.000Z" itemprop="datePublished">2016-10-11</time>
+    
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ES5的类"><span class="toc-number">1.</span> <span class="toc-text">ES5的类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类的继承"><span class="toc-number">1.1.</span> <span class="toc-text">类的继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#面向对象继承"><span class="toc-number">1.1.1.</span> <span class="toc-text">面向对象继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#原型继承"><span class="toc-number">1.1.2.</span> <span class="toc-text">原型继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#惨元类"><span class="toc-number">1.1.3.</span> <span class="toc-text">惨元类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES6的类"><span class="toc-number">2.</span> <span class="toc-text">ES6的类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES6继承"><span class="toc-number">3.</span> <span class="toc-text">ES6继承</span></a></li></ol>
+		</div>
+		
+		<h2 id="ES5的类"><a href="#ES5的类" class="headerlink" title="ES5的类"></a>ES5的类</h2><p>看完类的继承这一章，我不禁思考我之前类的应用环境是否正确，同时真正做类的继承的时候,需要好好思考。抽象能力真的很重要。</p>
+<h3 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h3><p>类的继承有面向对象式的继承和原型继承。</p>
+<h4 id="面向对象继承"><a href="#面向对象继承" class="headerlink" title="面向对象继承"></a>面向对象继承</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function extend(subClass,superClass)&#123;</div><div class="line">    var F=function()&#123;&#125;;</div><div class="line">    F.prototype=superClass.prototype;</div><div class="line">    subClass.prototype=new F();</div><div class="line">    //不直接复制，是因为引用，防止改变父类的值</div><div class="line">    subClass.prototype.constructor=subClass;</div><div class="line">    //维持原型链</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里只复制了原型但是属性还没有复制，可以把类当函数对待，用call调用到子类上就可以了。<code>superClass.call(subClass,[args])</code>。<br>然后可以改变一下extend函数，就可以访问父类的方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function extend(subClass,superClass)&#123;</div><div class="line">    var F=function()&#123;&#125;;</div><div class="line">    F.prototype=superClass.prototype;</div><div class="line">    subClass.prototype=new F();</div><div class="line">    //不直接复制，是因为引用，防止改变父类的值</div><div class="line">    subClass.prototype.constructor=subClass;</div><div class="line">    //维持原型链</div><div class="line"></div><div class="line">    subClass.superClass=superClass.prototype;</div><div class="line">    if(superClass.prototype.constructor==Object.prototype.constructor)&#123;</div><div class="line">        superClass.prototype.constructor=superClass;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里弱耦合了父类，这样可以直接subClass.superClass访问父类的方法属性，但是在这里重载不能很好的弱耦合的调用父类的方法。后面可以介绍一种更好的方法。</p>
+<h4 id="原型继承"><a href="#原型继承" class="headerlink" title="原型继承"></a>原型继承</h4><p>其实跟原型继承跟类的继承差不多，其实这里可以直接这样：<br><code>var subClass.prototype=new superClass()</code>,这样这里的子类的原型就等于父类的实例，但是这里有一点要注意，这样也会复制父类的属性，如果子类改变父类的某个属性可能会影响所有实例。所以子类要重新申明一下有的变量。</p>
+<h4 id="惨元类"><a href="#惨元类" class="headerlink" title="惨元类"></a>惨元类</h4><p>这是《JavaScript设计模式》中的翻译，大概意思就是重新建立一个类，然后用augment函数附到相应的类中，这样的好处可以减少代码的难度。</p>
+<p>下面是augment:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function augment(receivingClass,givingClass)&#123;</div><div class="line">    if(arguments.length&gt;2)&#123;</div><div class="line">        for(var i=2,len=arguments.length;i&lt;len;i++)&#123;</div><div class="line">            receivingClass.prototype[arguments[i]]=givingClass.prototype[arguments[i]];</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;else&#123;//give all methods</div><div class="line">        for(methodName in givingClass.prototype)&#123;</div><div class="line">            if(!receivingClass.prototype[methodName])&#123;</div><div class="line">                receivingClass.prototype[methodName]=givingClass.prototype[methodName];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>TODO#### 方便重载访问父类的方法</p>
+<h2 id="ES6的类"><a href="#ES6的类" class="headerlink" title="ES6的类"></a>ES6的类</h2><p>不用像函数那样定义类了，可以像下面这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">//定义类</div><div class="line">class Point &#123;</div><div class="line">  constructor(x, y) &#123;</div><div class="line">    this.x = x;</div><div class="line">    this.y = y;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  toString() &#123;</div><div class="line">    return &apos;(&apos; + this.x + &apos;, &apos; + this.y + &apos;)&apos;;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">//等于</div><div class="line">class Point &#123;</div><div class="line">  // ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">typeof Point // &quot;function&quot;</div><div class="line">Point === Point.prototype.constructor // true</div><div class="line"></div><div class="line"></div><div class="line">//----------------------</div><div class="line">class Point &#123;</div><div class="line">  constructor()&#123;</div><div class="line">    // ...</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  toString()&#123;</div><div class="line">    // ...</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  toValue()&#123;</div><div class="line">    // ...</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 等同于</div><div class="line"></div><div class="line">Point.prototype = &#123;</div><div class="line">  toString()&#123;&#125;,</div><div class="line">  toValue()&#123;&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>由于类的方法都定义在prototype对象上面，所以类的新方法可以添加在prototype对象上面。Object.assign方法可以很方便地一次向类添加多个方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class Point &#123;</div><div class="line">  constructor()&#123;</div><div class="line">    // ...</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Object.assign(Point.prototype, &#123;</div><div class="line">  toString()&#123;&#125;,</div><div class="line">  toValue()&#123;&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>另外，类的内部所有定义的方法，都是不可枚举的（non-enumerable）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class Point &#123;</div><div class="line">  constructor(x, y) &#123;</div><div class="line">    // ...</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  toString() &#123;</div><div class="line">    // ...</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Object.keys(Point.prototype)</div><div class="line">// []</div><div class="line">Object.getOwnPropertyNames(Point.prototype)</div><div class="line">// [&quot;constructor&quot;,&quot;toString&quot;]</div></pre></td></tr></table></figure>
+<p>TODO：ES6内部私有变量</p>
+<p>this的指向：<br>类的方法内部如果含有this，它默认指向类的实例。但是，必须非常小心，一旦单独使用该方法，很可能报错。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class Logger &#123;</div><div class="line">  printName(name = &apos;there&apos;) &#123;</div><div class="line">    this.print(`Hello $&#123;name&#125;`);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  print(text) &#123;</div><div class="line">    console.log(text);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">const logger = new Logger();</div><div class="line">const &#123; printName &#125; = logger;</div><div class="line">printName(); // TypeError: Cannot read property &apos;print&apos; of undefined</div></pre></td></tr></table></figure></p>
+<p>最好用箭头函数或bind<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class Logger &#123;</div><div class="line">  constructor() &#123;</div><div class="line">    this.printName = this.printName.bind(this);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">class Logger &#123;</div><div class="line">  constructor() &#123;</div><div class="line">    this.printName = (name = &apos;there&apos;) =&gt; &#123;</div><div class="line">      this.print(`Hello $&#123;name&#125;`);</div><div class="line">    &#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ES6继承"><a href="#ES6继承" class="headerlink" title="ES6继承"></a>ES6继承</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class ColorPoint extends Point &#123;&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://es6.ruanyifeng.com/#docs/class" target="_blank" rel="external">ES6继承</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/JS/">JS</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://maiff.cn/2016/10/11/类的继承和es6的类/" data-title="类的继承和es6的类 | Web up!!" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/10/06/ajax的遐思/"  title="ajax的遐思">
+ <strong>NEXT:</strong><br/> 
+ <span>ajax的遐思
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ES5的类"><span class="toc-number">1.</span> <span class="toc-text">ES5的类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类的继承"><span class="toc-number">1.1.</span> <span class="toc-text">类的继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#面向对象继承"><span class="toc-number">1.1.1.</span> <span class="toc-text">面向对象继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#原型继承"><span class="toc-number">1.1.2.</span> <span class="toc-text">原型继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#惨元类"><span class="toc-number">1.1.3.</span> <span class="toc-text">惨元类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES6的类"><span class="toc-number">2.</span> <span class="toc-text">ES6的类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES6继承"><span class="toc-number">3.</span> <span class="toc-text">ES6继承</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+			<li><a href="/categories/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/JS/" title="JS">JS<sup>4</sup></a></li>
+		
+			<li><a href="/categories/书/" title="书">书<sup>4</sup></a></li>
+		
+			<li><a href="/categories/生活/" title="生活">生活<sup>2</sup></a></li>
+		
+			<li><a href="/categories/项目/" title="项目">项目<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Web up! <br/>
+			这就是我的博客，不管你信还是不信~</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/u/3169630840/" target="_blank" title="weibo"></a>
+		
+		
+		
+		<a href="https://github.com/maiff" target="_blank" title="github"></a>
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wizicer/iceman" target="_blank" title="Iceman">Iceman</a> © 2016 
+		
+		<a href="http://maiff.cn" target="_blank" title="maiff">maiff</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
+
